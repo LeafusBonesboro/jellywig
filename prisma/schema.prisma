@@ -20,6 +20,8 @@ model User {
   createdAt     DateTime   @default(now())
   updatedAt     DateTime   @updatedAt
   emailVerified DateTime?
+  yahooToken    YahooToken?
+
 
 }
 
@@ -72,4 +74,13 @@ model Integration {
   user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId, provider])
+}
+
+model YahooToken {
+  id          Int      @id @default(autoincrement())
+  userId      String   @unique
+  accessToken String
+  refreshToken String
+  expiresAt   DateTime
+  user        User     @relation(fields: [userId], references: [id])
 }

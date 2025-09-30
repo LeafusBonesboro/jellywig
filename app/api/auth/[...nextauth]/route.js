@@ -12,12 +12,12 @@ export const authOptions = {
     }),
   ],
   session: {
-    strategy: "database",
+    strategy: "jwt", // ✅ THIS FIXES YOUR LOGIN LOOP
   },
   callbacks: {
-    async session({ session, user }) {
+    async session({ session, token }) {
       if (session?.user) {
-        session.user.id = user.id;
+        session.user.id = token.sub;
       }
       return session;
     },

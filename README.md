@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Fantasy Football Yahoo App (Working Title)
 
-## Getting Started
+## Overview
+This project is a rebuilt version of my previous Yahoo Fantasy integration, originally built with React + Flask + Render. The new version uses **Next.js + Vercel + Neon** for a cleaner architecture and easier auth, data fetching, and UI work.
 
-First, run the development server:
+The goal is to pull my Yahoo Fantasy Football league data (especially my team) and display useful stats, including PF/PA, weekly trends, standings, and projections.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Current Status
+- Planning + requirements phase
+- Tech stack chosen
+- OAuth strategy confirmed (Yahoo app will be reused)
+- Database selected (Neon for Postgres)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Tech Stack
+- **Next.js** (App Router)
+- **TailwindCSS** (and possibly Shadcn/UI)
+- **Vercel** for deployment + API routes
+- **Neon** for token + data storage
+- **Yahoo OAuth 2.0** for league/team access
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Upcoming Tasks
+1. Finalize initial UI layout (MVP screen priorities)
+2. Create Next.js project + GitHub repo
+3. Set up `.env.local` with:
+   - `YAHOO_CLIENT_ID`
+   - `YAHOO_CLIENT_SECRET`
+   - `YAHOO_REDIRECT_URI`
+   - `DATABASE_URL`
+4. Define `/api/auth/yahoo` for token exchange
+5. Connect Neon and create table for tokens
+6. First API call: fetch my team data
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Longer-Term Features
+- League-wide PF/PA + Luck Index
+- Power rankings
+- Weekly charts & projections
+- Notifications / AI analysis
+- Support for multiple teams or leagues
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Notes
+This rewrite is meant to avoid the previous “spaghetti” structure and leverage what I’ve learned using Next.js. OAuth and DB integration will be cleaner and modular this time around.
